@@ -55,10 +55,13 @@ def check_solution(user_solution, solution, count):
         return count
 
 
-def menu_option(count):
-    number_one = random.randrange(1, 21)
-    number_two = random.randrange(1, 21)
-    
+def menu_option(count, level):
+    if level == "easy":
+        number_one = random.randrange(1, 21)
+        number_two = random.randrange(1, 21)
+    else:
+        number_one = random.randrange(1, 101)
+        number_two = random.randrange(1, 101)
     problem = str(number_one) + " * " + str(number_two)
     solution = number_one * number_two
     
@@ -96,13 +99,18 @@ def main():
     total = 0
     correct = 0
     total = total + 1
-    new = menu_option(correct)
+    new = menu_option(correct,"difficult")
+    last_answer = new[3]
     files_list.append(new[1:])
     correct = int(new[0])
     option = get_user_input()
     while option.lower() != "n":
         total = total + 1
-        new1 = menu_option(correct)
+        if last_answer == "Yes":
+            new1 = menu_option(correct, "difficult")
+        else:
+            new1 = menu_option(correct, "easy")
+        last_answer = new1[3]
         files_list.append(new1[1:])
         correct = int(new1[0])
         option = get_user_input()
@@ -112,4 +120,3 @@ def main():
     display_result(name, total, correct, files_list)
 
 main()
-
