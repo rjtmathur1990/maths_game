@@ -60,8 +60,8 @@ def menu_option(count, level):
         number_one = random.randrange(1, 21)
         number_two = random.randrange(1, 21)
     else:
-        number_one = random.randrange(1, 101)
-        number_two = random.randrange(1, 101)
+        number_one = random.randrange(21, 101)
+        number_two = random.randrange(21, 101)
     problem = str(number_one) + " * " + str(number_two)
     solution = number_one * number_two
     
